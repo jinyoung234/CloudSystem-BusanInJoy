@@ -1,0 +1,154 @@
+.path-section {
+    width: 1280px;
+    height: 60px;
+    /* background: red; */
+    margin: 0 auto;
+    display: flex;
+    text-align: center;
+
+}
+
+.path-section>.path-text {
+    text-align: center;
+    height: 30px;
+    margin: 10px;
+    /* background: blue; */
+    line-height: 60px;
+}
+
+.path-section>.icon-img {
+    width: 40px;
+    height: 30px;
+    margin-top: 6px;
+    /* background: peru; */
+
+}
+
+.contentlist {
+    display: flex;
+    width: 1280px;
+    background: white;
+
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    margin: auto;
+}
+
+.contentlist>li {
+
+    /* background: blue; */
+    list-style: none;
+    height: 100px;
+    /* margin: auto; */
+}
+
+.contentlist>li>div {
+    /* background:green; */
+    height: 50px;
+    display: flex;
+    margin-top: 25px;
+    text-align: center;
+
+}
+
+.contentlist .first-list {
+    /* display: flex; */
+    /* background: yellow; */
+    width: 800px;
+}
+
+.contentlist .first-list>div {
+
+    display: flex;
+
+    text-align: center;
+    font-size: 15px;
+    width: 150px;
+    height: 30px;
+    margin-top: 10px;
+    margin-right: 10px;
+
+}
+
+.contentlist .first-list>div:not(:last-child) {
+    border-right: 2px solid #E1E1E1;
+
+}
+
+.contentlist .first-list>div>div {
+    margin-top: 4px;
+    margin-right: 10px;
+    text-align: center;
+    height: 30px;
+}
+
+.contentlist .middle-list {
+    display: flex;
+    text-align: center;
+    font-size: 16px;
+    width: 110px;
+    margin-right: 10px;
+    margin-left: 200px;
+    border: 1px solid rgba(0, 0, 0, 0.01);
+    border-radius: 20px;
+    box-shadow: 0px 0px 2px 0px gray;
+    cursor: pointer;
+}
+
+.contentlist .middle-list>div {
+    margin: auto;
+
+}
+
+.contentlist h6 {
+    margin-top: 10px;
+}
+
+.contentlist>div {
+    margin: auto;
+
+}
+
+.contentlist .last-list {
+    display: flex;
+    font-size: 16px;
+    width: 100px;
+    border: 1px solid rgba(0, 0, 0, 0.01);
+    border-radius: 20px;
+    box-shadow: 0px 0px 2px 0px gray;
+    cursor: pointer;
+}
+
+.contentlist .last-list>div {
+    margin: auto;
+}
+
+.contentlist2 {
+    display: flex;
+    width: 1280px;
+    height: 80px;
+    /* background: blue; */
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: #E1E1E1;
+    ;
+    margin: auto;
+}
+
+.contentlist2>div {
+    /* background: yellow; */
+    flex: 1;
+    margin: auto;
+
+}
+
+.contentlist2>div>div {
+    width: 100px;
+    /* background: red; */
+    margin: auto;
+    cursor: pointer;
+}
+
+.contentlist2>div:not(:last-child) {
+    border-right: 1px solid #E1E1E1;
+}

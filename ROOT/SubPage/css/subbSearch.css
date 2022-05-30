@@ -1,0 +1,124 @@
+.Ex_image {
+    margin-top: 100px;
+    width: 100%;
+    height: 275px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-image: url('/MainPagePicture/exhibition.png');
+
+}
+
+h2 {
+    color: white;
+}
+
+.Ex_subnav {
+    width: 100%;
+    height: 130px;
+    display: flex;
+    align-items: center;
+    padding-left: 100px;
+}
+
+.house {
+    font-size: 17px;
+}
+
+.sn_first {
+    width: 60px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+}
+
+.sn_second {
+    width: 80px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+}
+
+.sub_nav {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 70px;
+    padding-right: 70px;
+}
+
+.file {
+    margin-right: 20px;
+}
+
+.select_box {
+    width: 320px;
+    height: 50px;
+    border: 0px solid white;
+    border-radius: 10px;
+}
+
+.sub_nav_left {
+    width: 385px;
+    height: 60%;
+    border-bottom: 1px solid black;
+}
+
+.sub_nav_right {
+    display: flex;
+    justify-content: flex-end;
+    width: 800px;
+    height: 60%;
+}
+
+.nav_input {
+    width: 580px;
+    height: 50px;
+    border: 0px solid white;
+    border-radius: 5px;
+    margin-right: 5.5px;
+}
+
+.sub_nav_btn {
+    width: 210px;
+    height: 60px;
+    background-color: black;
+    color: white;
+    border: 0px solid black;
+}
+
+.path-section {
+    width: 1280px;
+    height: 60px;
+    /* background: red; */
+    margin: 0 auto;
+    display: flex;
+    text-align: center;
+
+}
+
+.path-section>.path-text {
+    text-align: center;
+    height: 30px;
+    margin: 10px;
+    /* background: blue; */
+    line-height: 60px;
+}
+
+.path-section>.icon-img {
+    width: 40px;
+    height: 30px;
+    margin-top: 6px;
+    /* background: peru; */
+
+}

@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>로그인</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="css/styles.css" rel="stylesheet" />
+    <!-- 네이버 . 카카오 -->
+    <script src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js" charset="utf-8"></script>
+    <script src="https://developers.kakao.com/sdk/js/kakao.js" charset="utf-8"></script>
+
+
+</head>
+
+
+
+<body id="page-top">
+    <!--dao-->
+    <section>
+        <nav class="navbar navbar-expand-xxl navbar-dark fixed-top bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <h1>BusanInJoy!</h1>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+
+                    <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+                        <!--로그인 성공-->
+                        <% if(){ %>
+                            <a class="me-3 py-2 text-white text-decoration-none" href="/SignIn/SignIn.html">로그아웃</a>
+                            <a class="me-3 py-2 text-white text-decoration-none" href="/Mypage/Mypage.html">마이페이지</a>
+                            <!--로그인 실패, 로그인 x-->
+                            <% } else { %>
+                                <a class="me-3 py-2 text-white text-decoration-none" href="/SignIn/SignIn.html">로그인</a>
+                                <a class="me-3 py-2 text-white text-decoration-none"
+                                    href="/SignIn/SignIn.html">마이페이지</a>
+                                <% } %>
+                    </nav>
+
+                </div>
+            </div>
+    </section>
+
+
+    <pre>
+
+
+
+
+
+
+
+
+
+
+</pre>
+    <section>
+        <div class="text-center text-dark">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 mb-5 mb-lg-0">
+                        <h2 class="text-uppercase mb-4"><b>로그인 페이지</b></h2>
+                        <hr>
+                        <p class="lead mb-1">
+                        </p>
+                    </div>
+                    <!-- 네이버 카카오 로그인-->
+                    <li>
+                        <a ID="naverIdLogin_loginButton" href="javascript:void(0)">
+                            <span>네이버 로그인</span>
+                        </a>
+                    </li>
+                    <li onclick="kakaoLogin();">
+                        <a href="javascript:void(0)">
+                            <span>카카오 로그인</span>
+                        </a>
+                    </li>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="page-section portfolio" id="portfolio">
+        <div class="container">
+
+
+            <div class="row justify-content-center">
+
+                <!--카카오 로그인-->
+                <div class="col-md-4 col-lg-4 mb-5">
+                    <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal1">
+                        <div
+                            class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                            <div class="portfolio-item-caption-content text-center text-white"><i
+                                    class="fas fa-plus fa-3x"></i></div>
+                        </div>
+                        <img class="img-fluid" src="/SignIn/forKakako.jpg" alt="..." />
+
+
+                    </div>
+                </div>
+                <!--네이버 로그인-->
+                <div class="col-md-4 col-lg-4 mb-5">
+                    <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal2">
+                        <div
+                            class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                            <div class="portfolio-item-caption-content text-center text-white"><i
+                                    class="fas fa-plus fa-3x"></i></div>
+                        </div>
+                        <img class="img-fluid" src="/SignIn/forNaver.jpg" alt="..." />
+                        </a>
+                    </div>
+                </div>
+                <!--일반회원 로그인-->
+                <div class="col-md-4 col-lg-4 mb-5">
+                    <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal3">
+                        <div
+                            class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                            <div class="portfolio-item-caption-content text-center text-white"><i
+                                    class="fas fa-plus fa-3x"></i></div>
+                        </div>
+                        <img class="img-fluid" src="/SignIn/forNormal.jpg" alt="..." />
+                    </div>
+                </div>
+                <!--일반회원 가입-->
+                <div class="col-md-4 col-lg-4 mb-5 mb-lg-0">
+                    <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal4">
+                        <div
+                            class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                            <div class="portfolio-item-caption-content text-center text-white"><i
+                                    class="fas fa-plus fa-3x"></i></div>
+                        </div>
+                        <img class="img-fluid" src="/SignIn/forNormalUp.jpg" alt="..." />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <!-- 일반회원 로그인 모달창 -->
+    <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" aria-labelledby="portfolioModal4"
+        aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal"
+                        aria-label="Close"></button></div>
+                <div class="modal-body text-center pb-5">
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+
+                                <!-- Portfolio Modal - Image-->
+                                <img class="img-fluid rounded mb-5" src="" alt="..." />
+                                <!-- Portfolio Modal - Text-->
+                                <p class="mb-4">
+                                </p>
+                                <button class="btn btn-primary" data-bs-dismiss="modal">
+                                    <i class="fas fa-xmark fa-fw"></i>
+                                    창 닫기
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section>
+        <footer class="footer text-center fixed-bottom  text-white bg-dark">
+            <div class="container">
+                <div class="row">
+                    <!-- Footer Location-->
+                    <div class="col-lg-4 mb-5 mb-lg-0">
+                        <h3 class="text-uppercase mb-4"><b>위치</b></h3>
+                        <p class="lead mb-0">
+                            부산광역시 부산진구 엄광로 176
+                            <br />
+                            동의대학교, 정보관
+                        </p>
+                    </div>
+                    <!-- Footer Social Icons-->
+                    <div class="col-lg-4 mb-5 mb-lg-0">
+                        <h3 class="text-uppercase mb-4"><b>바로가기</b></h3>
+                        <a class="btn btn-outline-light btn-social mx-1" href="#!"><img src="door.jpg" width="50"
+                                height="50"></a>
+                        <a class="btn btn-outline-light btn-social mx-1" href="#!"><img src="deu.png" width="50"
+                                height="50"></a>
+                    </div>
+                    <!-- Footer About Text-->
+                    <div class="col-lg-4">
+                        <h3 class="text-uppercase mb-4"><b>Team 버스태워조</b></h3>
+                        <p class="lead mb-0">
+                            이주혁 | 양은지 |
+                            신채은 | 손진영
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </section>
+    <script>
+        Kakao.init('052f4b609ec36cc0fcc567f4290e2704'); //발급받은 키 중 javascript키를 사용해준다.
+        console.log(Kakao.isInitialized()); // sdk초기화여부판단
+        //카카오로그인
+        function kakaoLogin() {
+            Kakao.Auth.login({
+                success: function (response) {
+                    Kakao.API.request({
+                        url: '/v2/user/me',
+                        success: function (response) {
+                            console.log(response)
+                        },
+                        fail: function (error) {
+                            console.log(error)
+                        },
+                    })
+                },
+                fail: function (error) {
+                    console.log(error)
+                },
+            })
+        }
+        //카카오로그아웃  
+        function kakaoLogout() {
+            if (Kakao.Auth.getAccessToken()) {
+                Kakao.API.request({
+                    url: '/v1/user/unlink',
+                    success: function (response) {
+                        console.log(response)
+                    },
+                    fail: function (error) {
+                        console.log(error)
+                    },
+                })
+                Kakao.Auth.setAccessToken(undefined)
+            }
+        }
+    </script>
+
+    <script>
+        //네이버 로그인
+        var naverLogin = new naver.LoginWithNaverId(
+            {
+                clientId: "K5t_wZT2SSWIvubwpAGz", //내 애플리케이션 정보에 cliendId를 입력해줍니다.
+                callbackUrl: "http://118.67.131.126:8080/loginsuccess_NAVER", // 내 애플리케이션 API설정의 Callback URL 을 입력해줍니다.
+                isPopup: false,
+                callbackHandle: true
+            }
+        );
+
+        naverLogin.init();
+
+        window.addEventListener('load', function () {
+            naverLogin.getLoginStatus(function (status) {
+                if (status) {
+                    var email = naverLogin.user.getEmail(); // 필수로 설정할것을 받아와 아래처럼 조건문을 줍니다.
+
+                    console.log(naverLogin.user);
+
+                    if (email == undefined || email == null) {
+                        alert("이메일은 필수정보입니다. 정보제공을 동의해주세요.");
+                        naverLogin.reprompt();
+                        return;
+                    }
+                } else {
+                    console.log("callback 처리에 실패하였습니다.");
+                }
+            });
+        });
+        var testPopUp;
+        function openPopUp() {
+            testPopUp = window.open("https://nid.naver.com/nidlogin.logout", "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,width=1,height=1");
+        }
+        function closePopUp() {
+            testPopUp.close();
+        }
+        //네이버 로그아웃
+        function naverLogout() {
+            openPopUp();
+            setTimeout(function () {
+                closePopUp();
+            }, 1000);
+
+
+        }
+    </script>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
+    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+</body>
+
+</html>
