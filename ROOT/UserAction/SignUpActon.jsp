@@ -12,18 +12,24 @@
     String age = request.getParameter("age");
     String email = request.getParameter("email");
     //회원 이미지 업로드 구현x
-    String profile = request.getParameter("profile");
 
     UserDAO dao = new UserDAO();
     
-    if (dao.check(id)) {
+    if (dao.checkID(id)) {
         %>
         <script>
-            alert("이미 가입한 회원입니다.");
+            alert("중복된 ID 입니다. 다시 회원가입해주십시요.");
             location.href="/SignUp/SignUp.jsp";
         </script> <%
     }
-    if (dao.signUp(id, pw, name, age, email, profile)) {
+    else if (dao.checkEmail(email)) {
+        %>
+        <script>
+            alert("중복된 이메일 입니다. 다시 회원가입해주십시요.");
+            location.href="/SignUp/SignUp.jsp";
+        </script> <%
+    }
+    else if (dao.signUp(id, pw, name, age, email)) {
         %>
         <script>
             alert("회원가입에 성공하였습니다. 로그인 해주십시요.");

@@ -11,11 +11,9 @@
             UserDAO dao = new UserDAO();
             
             int result = dao.login(id,pw);
-            out.println(result);
             
             if (result == 1) {
-                session.setAttribute("sessionId", id);
-                session.setAttribute("sessionPw", pw); %>
+                session.setAttribute("sessionId", id); %>
         <script>
             alert("로그인 성공");
             location.href="/main/main.jsp";

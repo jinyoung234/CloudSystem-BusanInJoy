@@ -58,9 +58,9 @@ date = date.substring(0,10);
                  </div>
             </div>
             <div class="bt_wrap">
-                <!-- <input type="submit" class="on" value="등록" onclick="javascript: form.action='reviewWrite.jsp';"> -->
+                <!-- <input type="submit" class="on" value="삭제" onclick="javascript: form.action='reviewDelete.jsp';"> -->
                 <!-- <a href="reviewWrite.jsp" class="on">등록</a> -->
-                <a href="javascript:window.history.go(-1);">뒤로가기</a>                
+                <a href="javascript:window.history.go(-1);" style="width:80px;">뒤로가기</a>                
             </div>
         </div>
     </form>

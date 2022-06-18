@@ -22,8 +22,6 @@ public class SearchDAO {
    
     // 게시판 검색 기능을 위한 메서드
     public List<SearchDTO> searchContent(String searchContent) {
-
-
             try {
                 con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project?serverTimezone=UTC", "busaninjoy", "1234");
                 
@@ -36,13 +34,15 @@ public class SearchDAO {
 
             // sql Query
             String sql = "select * from feed where fName like ?;";
-
+            //like 연산자를 통한 feed 제목 검색
             try {
                 pstmt = con.prepareStatement(sql);
                 pstmt.setString(1, "%"+searchContent+"%");
                 rs = pstmt.executeQuery();
 
                 // dto객체 생성 후 FeedDTO 리스트에 추가
+
+
                 while(rs.next()) {
                     SearchDTO dto = new SearchDTO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getInt(6));
                     res.add(dto);
@@ -58,7 +58,7 @@ public class SearchDAO {
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
-            }
+            }//예외처리
 
             return res;
         }

@@ -7,10 +7,10 @@ public class MyDAO {
 Connection con = null;
 PreparedStatement stmt = null;
 ResultSet rs = null;
+String str = "jdbc:mysql://localhost:3306/project?serverTimezone=UTC";
     public String id;
     public String pw;
     public String name;
-    public String profile;
     public String email;
     public String age;
     public String sql;
@@ -23,11 +23,15 @@ ResultSet rs = null;
         }
     }
 
+
+
+    //마이페이지 출력 메소드
     public void getInfo(String id)
     {
         try{
-        con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project?serverTimezone=UTC", "busaninjoy", "1234");
+        con = DriverManager.getConnection(str, "busaninjoy", "1234");
         sql="select * from user where id = ?";
+        //마이페이지 SessionID 값에 해당하는 회원의 정보를 불러들인다.
         stmt = con.prepareStatement(sql);
         stmt.setString(1, id);
         rs = stmt.executeQuery();        
@@ -36,7 +40,6 @@ ResultSet rs = null;
             pw = rs.getString("pw");
             name = rs.getString("name");
             email = rs.getString("email");
-            profile = rs.getString("profile");
             age = rs.getString("age");
         }
 

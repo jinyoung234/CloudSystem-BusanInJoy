@@ -29,26 +29,25 @@
                  <div class="title">
                      <dl>
                          <dt>제목</dt>
-                         <dd><input type="text" placeholder="제목 입력" name="title"></dd>
+                         <dd><input type="text" placeholder="제목 입력" name="title"  required></dd>
                      </dl>
                  </div>
                  <div class="info">
                     <dl>
                         <dt>글쓴이</dt>
-                        <dd><input type="text" placeholder="작성자 아이디" name="uid"></dd>
+                        <dd><%=(String)session.getAttribute("sessionId")%></dd>
                     </dl>
                     <dl>
                         <dt>평점</dt>
-                        <dd><input type="number" min="1" max="5" value="5" name="rating"></dd>
+                        <dd><input type="number" min="1" max="5" value="5" name="rating"  required></dd>
                     </dl>
                  </div>
                  <div class="cont">
-                    <textarea placeholder="내용 입력" name ="content"></textarea>
+                    <textarea placeholder="내용 입력" name ="content"  required></textarea>
                  </div>
             </div>
             <div class="bt_wrap">
                 <input type="submit" class="on" value="등록" onclick="javascript: form.action='reviewWrite.jsp?fid=<%=fid%>';">
-                <!-- <a href="reviewWrite.jsp" class="on">등록</a> -->
                 <a href="javascript:window.history.back();" style="width:80px;">취소</a>                
             </div>
         </div>

@@ -39,12 +39,8 @@
         <nav class="navbar navbar-expand-xxl navbar-dark fixed-top bg-dark">
             <div class="container-fluid">
                 <a class="navbar-brand" href="main.jsp">
-                    <h1>BusanInJoy!</h1>
+                    <h1><b>BusanInJoy!</b></h1>
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
-                    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
                         <a class="me-3 py-2 text-white text-decoration-none"><%= session.getAttribute("sessionId") %> 님, 환영합니다. </a>
@@ -53,6 +49,7 @@
                     </nav>
                 </div>
             </div>
+        </nav>
     </section>
 
 
@@ -60,7 +57,7 @@
         <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active" data-bs-interval="5000">
-                    <a href="/ContentPage/WalkContent/WalkContent1.jsp"><img src="First1.jpg" class="d-block w-100" alt="..."></a>
+                    <a href="/ContentPage/WalkContent/WalkContent1.jsp#tab1"><img src="First1.jpg" class="d-block w-100" alt="..."></a>
                     <div class="carousel-caption d-none d-md-block">
                         <div class="text-white" width="500px" height="500px"
                             style="background:000000; background : rgba(0, 0, 0, 0.4);">
@@ -70,7 +67,7 @@
                     </div>
                 </div>
                 <div class="carousel-item" data-bs-interval="5000">
-                    <a href="/ContentPage/FestivalContent/FestivalContent4.jsp"><img src="Second2.jpg" class="d-block w-100" alt="..."></a>
+                    <a href="/ContentPage/FestivalContent/FestivalContent4.jsp#tab1"><img src="Second2.jpg" class="d-block w-100" alt="..."></a>
                     <div class="carousel-caption d-none d-md-block">
                         <div class="text-white" width="500px" height="500px"
                             style="background:000000; background : rgba(0, 0, 0, 0.4);">
@@ -80,7 +77,7 @@
                     </div>
                 </div>
                 <div class="carousel-item" data-bs-interval="5000">
-                    <a href="/ContentPage/MarketContent/MarketContent2.jsp"><img src="Third3.jpg" class="d-block w-100" alt="..."></a>
+                    <a href="/ContentPage/MarketContent/MarketContent2.jsp#tab1"><img src="Third3.jpg" class="d-block w-100" alt="..."></a>
                     <div class="carousel-caption d-none d-md-block">
                         <div class="text-white" width="500px" height="500px"
                             style="background:000000; background : rgba(0, 0, 0, 0.4);">
@@ -93,12 +90,11 @@
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark"
                 data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
             </button>
             <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark"
                 data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
+                <!-- <span class="visually-hidden">Next</span> -->
             </button>
         </div>
     </section>
@@ -130,7 +126,7 @@
                 <div class="row">
                     <div class="col-lg-3 col-md-6">
                         <div class="card" style="width: 18rem;">
-                            <img src="Market.jpg" class="card-img-top" alt="...">
+                            <img src="sijang.jpg" class="card-img-top" alt="...">
                             <div class="card-body text-center">
                                 <h5 class="card-title"><b>Market</b></h5>
                                 <a href="/SubPage/Market.jsp" class="btn btn-light">이동하기</a>
@@ -148,7 +144,7 @@
                     </div>
                     <div class="col-lg-3 col-md-6">
                         <div class="card" style="width: 18rem;">
-                            <img src="Food.jpg" class="card-img-top" alt="...">
+                            <img src="joge.jpg" class="card-img-top" alt="...">
                             <div class="card-body text-center">
                                 <h5 class="card-title"><b>Food</b></h5>
                                 <a href="/SubPage/Food.jsp" class="btn btn-light">이동하기</a>
@@ -215,9 +211,9 @@
                             var player;
                             function onYouTubeIframeAPIReady() {
                                 player = new YT.Player('busanTravelIframe1', {
-                                    events: {                                   // 플레이어 로드가 완료되고 API 호출을 받을 준비가 될 때마다 실행
-                                        'onStateChange': onPlayerStateChange    // 플레이어의 상태가 변경될 때마다 실행
-                                    }
+                                    events: {// 플레이어 로드가 완료되고 API 호출을 받을 준비가 될 때마다 실행
+                                        'onStateChange': onPlayerStateChange
+                                    }// 플레이어의 상태가 변경될 때마다 실행
                                 });
                             }
                             var playerState;
@@ -446,7 +442,7 @@
         <footer class="footer text-center fixed-bottom text-white bg-dark">
             <div class="container">
                 <div class="row">
-                    <!-- Footer Location-->
+                    <!-- 왼쪽 문단 -->
                     <div class="col-lg-4 mb-5 mb-lg-0">
                         <h3 class="text-uppercase mb-4"><b>위치</b></h3>
                         <p class="lead mb-0">
@@ -455,15 +451,15 @@
                             동의대학교, 정보관
                         </p>
                     </div>
-                    <!-- Footer Social Icons-->
+                    <!-- 중간 문단-->
                     <div class="col-lg-4 mb-5 mb-lg-0">
                         <h3 class="text-uppercase mb-4"><b>바로가기</b></h3>
-                        <a class="btn btn-outline-light btn-social mx-1" href="#!"><img src="door.jpg" width="50"
+                        <a href="https://door.deu.ac.kr/sso/business.aspx"><img src="door.jpg" width="50"
                                 height="50"></a>
-                        <a class="btn btn-outline-light btn-social mx-1" href="#!"><img src="deu.png" width="50"
+                        <a href="https://www.deu.ac.kr/www"><img src="deu.png" width="50"
                                 height="50"></a>
                     </div>
-                    <!-- Footer About Text-->
+                    <!-- 오른쪽 문단-->
                     <div class="col-lg-4">
                         <h3 class="text-uppercase mb-4"><b>Team 버스태워조</b></h3>
                         <p class="lead mb-0">

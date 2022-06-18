@@ -20,10 +20,7 @@
                         <title>BusanInJoy</title>
                         <link rel="stylesheet" href="style.css">
                         <meta name="viewport" content="width=device-width, initial-scale=1 shrink-to-fit=no">
-                        <meta name="description" content="">
-
-                        <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/album/">
-
+                        
                         <!-- Core theme CSS (includes Bootstrap)-->
                         <link href="css/content.css" rel="stylesheet" />
                         <link href="/Review/css/style.css" rel="stylesheet" />
@@ -33,8 +30,6 @@
                             rel="stylesheet"
                             integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
                             crossorigin="anonymous">
-
-                        <script src="https://code.jquery.com/jquery-3.4.1.js" crossorigin="anonymous"></script>
 
 
 
@@ -117,13 +112,8 @@
                             <nav class="navbar navbar-expand-xxl navbar-dark fixed-top bg-dark">
                                 <div class="container-fluid">
                                     <a class="navbar-brand" href="/main/main.jsp">
-                                        <h1>BusanInJoy!</h1>
+                                        <h1><b>BusanInJoy!</b></h1>
                                     </a>
-                                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#navbarCollapse" aria-controls="navbarCollapse"
-                                        aria-expanded="false" aria-label="Toggle navigation">
-                                        <span class="navbar-toggler-icon"></span>
-                                    </button>
                                     <div class="collapse navbar-collapse" id="navbarCollapse">
 
                                         <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
@@ -216,9 +206,14 @@
                                             </div>
                                         </li>
                                         <li style="display: flex; width: 480px; justify-content:flex-end; margin-right: 30px;">
+                                            <div style="margin-right:10px;" class="last-list">
+                                                <div style="padding-top:15px;">
+                                                    <a style="font-size:14px; text-decoration: none; color:black;" href="https://search.naver.com/search.naver?where=view&sm=tab_jum&query=%EB%AF%BC%EB%9D%BD%ED%9A%8C%ED%83%80%EC%9A%B4"><p style="text-align: center;">추가 정보</p></a>
+                                                </div>
+                                            </div>
                                             <div class="last-list">
                                                 <div style="padding-top:15px;">
-                                                    <a style="font-size:14px; text-decoration: none; color:black;" href="/SubPage/Market.jsp"><p style="text-align: center;">뒤로가기</p></a>
+                                                    <a style="font-size:14px; text-decoration: none; color:black;" href="/SubPage/Market.jsp"><p style="text-align: center;">카테고리 이동</p></a>
                                                 </div>
                                             </div>
                                         </li>
@@ -294,11 +289,11 @@
 
                                             </div>
                                             <div id="tab2" class="tab">
-                                                <h2 class="mt-3">
+                                                <h2 class="mt-3"><b>
                                                     <% 
                                                     out.print(marketList.get(0));
                                                     %>
-                                                </h2>
+                                                </b></h2>
                                                 <br>
                                                     <h2><b><% 
                                                      out.println("주소"); 
@@ -312,21 +307,35 @@
                                                     <div id="map" style="width:1200px;height:550px;"></div>
                                                     <script type="text/javascript"
                                                     src="//dapi.kakao.com/v2/maps/sdk.js?appkey=26747c65726da5e5602d24ad6195c707"></script>
-                                                <script>
-                                                    var container = document.getElementById('map');
-                                                    var options = {
-                                                        center: new kakao.maps.LatLng(35.155643,129.1237),
-                                                        level: 3
-                                                    };
-
-                                                    var map = new kakao.maps.Map(container, options);
-                                                    var markerPosition  = new kakao.maps.LatLng(35.155643,129.1237); 
-
-                                                    var marker = new kakao.maps.Marker({
-                                                        position: markerPosition
-                                                    });
-                                                    marker.setMap(map);
-                                                </script>
+                                                    <script>
+                                                        var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+        mapOption = { 
+            center: new kakao.maps.LatLng(35.155643,129.1237), // 지도의 중심좌표
+            level: 3 // 지도의 확대 레벨
+        };
+    
+    var map = new kakao.maps.Map(mapContainer, mapOption);
+    
+    // 마커가 표시될 위치입니다 
+    var markerPosition  = new kakao.maps.LatLng(35.155643,129.1237); 
+    
+    // 마커를 생성합니다
+    var marker = new kakao.maps.Marker({
+        position: markerPosition
+    });
+    
+    // 마커가 지도 위에 표시되도록 설정합니다
+    marker.setMap(map);
+    var iwContent = '<div style="padding: 1em 2em; margin: 2em 0; font-weight: bold; 5px #000000; "><h4><b>민락 회 타운</b></h4> <br> <h6><b>부산광역시 수영구 민락수변로 1</b></h6> </div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+        iwPosition = new kakao.maps.LatLng(35.155643,129.1237); //인포윈도우 표시 위치입니다
+    
+    // 인포윈도우를 생성합니다
+    var infowindow = new kakao.maps.InfoWindow({
+        position : iwPosition, 
+        content : iwContent 
+    });
+    infowindow.open(map, marker); 
+                                                    </script>
 
 
                                                 </p>
@@ -503,9 +512,9 @@
                                                     <!-- Footer Social Icons-->
                                                     <div class="col-lg-4 mb-5 mb-lg-0">
                                                         <h3 class="text-uppercase mb-4"><b>바로가기</b></h3>
-                                                        <a class="btn btn-outline-light btn-social mx-1" href="#!"><img
+                                                        <a  href="#!"><img
                                                                 src="door.jpg" width="50" height="50"></a>
-                                                        <a class="btn btn-outline-light btn-social mx-1" href="#!"><img
+                                                        <a href="#!"><img
                                                                 src="deu.png" width="50" height="50"></a>
                                                     </div>
                                                     <!-- Footer About Text-->
@@ -533,6 +542,7 @@
                     </body>
 
                     </html>
+
 
 
 

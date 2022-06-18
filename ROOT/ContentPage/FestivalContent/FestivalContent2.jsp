@@ -13,7 +13,7 @@
 <%@ page import="org.json.simple.parser.JSONParser" %>
 <%@ page import="org.json.simple.parser.ParseException" %>
 
-                    <html lang="en">
+                    <html>
 
                     <head>
                         <meta charset="UTF-8">
@@ -21,8 +21,6 @@
                         <link rel="stylesheet" href="style.css">
                         <meta name="viewport" content="width=device-width, initial-scale=1 shrink-to-fit=no">
                         <meta name="description" content="">
-
-                        <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/album/">
 
                         <!-- Core theme CSS (includes Bootstrap)-->
                         <link href="css/content.css" rel="stylesheet" />
@@ -33,8 +31,6 @@
                             rel="stylesheet"
                             integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
                             crossorigin="anonymous">
-
-                        <script src="https://code.jquery.com/jquery-3.4.1.js" crossorigin="anonymous"></script>
 
 
 
@@ -117,21 +113,14 @@
                                         <nav class="navbar navbar-expand-xxl navbar-dark fixed-top bg-dark">
                                             <div class="container-fluid">
                                                 <a class="navbar-brand" href="/main/main.jsp">
-                                                    <h1>BusanInJoy!</h1>
+                                                    <h1><b>BusanInJoy!</b></h1>
                                                 </a>
-                                                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                                                    data-bs-target="#navbarCollapse" aria-controls="navbarCollapse"
-                                                    aria-expanded="false" aria-label="Toggle navigation">
-                                                    <span class="navbar-toggler-icon"></span>
-                                                </button>
                                                 <div class="collapse navbar-collapse" id="navbarCollapse">
-
                                                     <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
                                                         <a class="me-3 py-2 text-white text-decoration-none"><%= session.getAttribute("sessionId") %> 님, 환영합니다. </a>
                                                         <a class="me-3 py-2 text-white text-decoration-none" href="/UserAction/LogoutAction.jsp">로그아웃</a>
                                                         <a class="me-3 py-2 text-white text-decoration-none" href="/Mypage/Mypage.jsp">마이페이지</a>                                
                                                     </nav>
-
                                                 </div>
                                             </div>
                                     </section>
@@ -216,9 +205,14 @@
                                             </div>
                                         </li>
                                         <li style="display: flex; width: 480px; justify-content:flex-end; margin-right: 30px;">
+                                            <div style="margin-right:10px;" class="last-list">
+                                                <div style="padding-top:15px;">
+                                                    <a style="font-size:14px; text-decoration: none; color:black;" href="http://www.gjfac.org/gjfac/main.php"><p style="text-align: center;">예약하기</p></a>
+                                                </div>
+                                            </div>
                                             <div class="last-list">
                                                 <div style="padding-top:15px;">
-                                                    <a style="font-size:14px; text-decoration: none; color:black;" href="/SubPage/Festival.jsp"><p style="text-align: center;">뒤로가기</p></a>
+                                                    <a style="font-size:14px; text-decoration: none; color:black;" href="/SubPage/Festival.jsp"><p style="text-align: center;">카테고리 이동</p></a>
                                                 </div>
                                             </div>
                                         </li>
@@ -330,6 +324,15 @@
                                                         position: markerPosition
                                                     });
                                                     marker.setMap(map);
+                                                    var iwContent = '<div style="padding: 1em 2em; margin: 2em 0; font-weight: bold; 5px #000000; "><h4><b>부산 금정산성축제</b></h4> <br> <h6><b>부산광역시 금정구 장전온천천로 144</b></h6> </div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+                                                    iwPosition = new kakao.maps.LatLng(35.22585, 129.00346); //인포윈도우 표시 위치입니다
+    
+                                                    // 인포윈도우를 생성합니다
+                                                    var infowindow = new kakao.maps.InfoWindow({
+                                                    position : iwPosition, 
+                                                    content : iwContent 
+                                                    });
+    infowindow.open(map, marker); 
                                                 </script>
 
 
@@ -386,22 +389,9 @@
                                                                   <div class="date">작성일</div>
                                                               </div>
                                                               <%
-                                                             
-                                                              
+                                                                         
                                                               List<ReviewDTO> list = reviewDAO.selectAll(); // review 테이블에서 모든 튜플을 dto객체로 받아옴.
-                                                             
-                                                              String vpage = request.getParameter("vpage");
-                                                              if(vpage==null) { // 디폴트 페이지는 1페이지
-                                                                  vpage= "1";
-                                                              }
-                                                              int v_page = Integer.parseInt(vpage); // 사용자가 클릭한 페이지 값을 받음
-                                                              int startIdx = (v_page-1)*5; // 출력 시작할 행 번호
-                                                              int endIdx =(v_page*5-1)>=list.size()?list.size():(v_page*5-1)+1; // 출력 끝낼 행 번호
-                                                              int pageNum=(int)Math.ceil((double)list.size()/5); // 리뷰글을 한 페이지에 5개씩 출력해줄때 총 필요한 페이지 개수.
-                                                              
-                                                                String str=null;
-                                                                int idx=0;
-                                                    
+                                                              int idx=0;
                                                                 for(int j=0;j<list.size(); j++) { // 받아온 dto객체 중 i번째 dto객체의 content속성(리뷰 내용)값
                                                                     String fid=list.get(j).getR_fid();
                                                                     if(fid.equals("2")) {
@@ -412,25 +402,21 @@
                                                                         String rating = Integer.toString(list.get(j).getR_rating());
                                                                         String uid = list.get(j).getR_uid();
                                                                         String date = list.get(j).getR_date();
-                                                                        date = date.substring(0,10);
-                                                                    
-                                                                  
+                                                                        date = date.substring(0,10);                          
                                                                %>
                                                                <div>
                                                                 <div class="num"><%=idx%></div>
-                                                                <div class="title"><a href="Review/reviewContent.jsp?vpage=<%=vpage%>&selectNo=<%=no%>"><%=title%></a></div> // 선택한 게시글 번호를 넘겨줌
+                                                                <div class="title"><a href="/Review/reviewContent.jsp?selectNo=<%=no%>"><%=title%></a></div> // 선택한 게시글 번호를 넘겨줌
                                                                 <div class="writer"><%=uid%></div>
                                                                 <div class="date"><%=date%></div>
                                                               </div>
-                                                  
                                                                <%
-                                                            } //if-end
+                                                            }
                                                         } //for-end 
                                                               %>
                                                         </div>
                                                         <div class="bt_wrap">
                                                             <a href="/Review/reviewWriteForm.jsp?fid=2" class="on">리뷰작성</a>
-                                                            <!-- <a href="a">작성</a> -->
                                                         </div>
                                                     </div>
                                                 </div>
@@ -534,6 +520,7 @@
                     </body>
 
                     </html>
+
 
 
 

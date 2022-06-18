@@ -5,7 +5,7 @@
 
 
     <!DOCTYPE html>
-    <html lang="en">
+    <html>
 
     <head>
         <meta charset="UTF-8">
@@ -14,8 +14,6 @@
         <link rel="shortcut icon" sizes="16x16 32x32 64x64" href="/SignIn/assets/img/favicon.ico">
         <title>BusanInJoy!</title>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
-        <script src="https://kit.fontawesome.com/bdc5894e42.js" crossorigin="anonymous"></script>
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
         <link href="/SubPage/css/subbSearch.css" rel="stylesheet">
     </head>
@@ -24,7 +22,16 @@
         <-- DAO, DTO 객체 들어갈 쿼리 스트링 -->
         <% SearchDAO dao=new SearchDAO(); 
            String search = request.getParameter("search");
-           List<SearchDTO> searchlist = null;
+           List<SearchDTO> searchlist = null; %>
+        <%  if(search.equals("") || search.equals(" "))
+            {%>
+               <script>
+               alert("검색결과가 없습니다. 다시 검색해주세요.");
+               location.href="/SubPage/Food.jsp";
+               </script><%
+        }%>
+        
+        <%   
            searchlist = dao.searchContent(search);
            String url1 = "만드리곤드레밥";
            String url2 = "만호갈미 샤브샤브";
@@ -35,21 +42,14 @@
                 <nav class="navbar navbar-expand-xxl navbar-dark fixed-top bg-dark">
                     <div class="container-fluid">
                         <a class="navbar-brand" href="/main/main.jsp">
-                            <h1>BusanInJoy!</h1>
+                            <h1><b>BusanInJoy!</b></h1>
                         </a>
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#navbarCollapse" aria-controls="navbarCollapse"
-                            aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
                         <div class="collapse navbar-collapse" id="navbarCollapse">
-
                             <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
                                 <a class="me-3 py-2 text-white text-decoration-none"><%= session.getAttribute("sessionId") %> 님, 환영합니다. </a>
                                 <a class="me-3 py-2 text-white text-decoration-none" href="/UserAction/LogoutAction.jsp">로그아웃</a>
                                 <a class="me-3 py-2 text-white text-decoration-none" href="/Mypage/Mypage.jsp">마이페이지</a>                                
                             </nav>
-
                         </div>
                     </div>
             </section>
@@ -89,7 +89,7 @@
                     <section class="main_2">
             <div class="bg-white">
                 <div style="display:flex; justify-content: center; margin-top: 50px;">
-                    
+                    <% if(!(searchlist.isEmpty())) { %>
                     <div class="row">                 
                         <div  class="col-lg-3 col-md-6">         
                             <div style=" width: 400px; height: 130px; display : flex; align-items: center; margin-right: 5px;" class="card">
@@ -99,13 +99,13 @@
                                     <p style="font-size : 14px;"> <% out.print(searchlist.get(0).getF_subName()); %> </p>
                                     <p>조회수 : <% out.print(searchlist.get(0).getF_count()); %> 리뷰수 : <% out.print(searchlist.get(0).getF_reviewcount()); %> </p>
                                     <% if((searchlist.get(0).getF_name()).equals(url1)) { %>
-                                        <a href="/ContentPage/FoodContent/FoodContent1.jsp" class="btn btn-light">이동하기</a>
+                                        <a href="/ContentPage/FoodContent/FoodContent1.jsp#tab1" class="btn btn-light">이동하기</a>
                                     <% } else if((searchlist.get(0).getF_name()).equals(url2)) { %>
-                                        <a href="/ContentPage/FoodContent/FoodContent2.jsp" class="btn btn-light">이동하기</a>
+                                        <a href="/ContentPage/FoodContent/FoodContent2.jsp#tab1" class="btn btn-light">이동하기</a>
                                     <% } else if((searchlist.get(0).getF_name()).equals(url3)) { %>
-                                        <a href="/ContentPage/FoodContent/FoodContent3.jsp" class="btn btn-light">이동하기</a>
+                                        <a href="/ContentPage/FoodContent/FoodContent3.jsp#tab1" class="btn btn-light">이동하기</a>
                                     <% } else if((searchlist.get(0).getF_name()).equals(url4)) { %>
-                                        <a href="/ContentPage/FoodContent/FoodContent4.jsp" class="btn btn-light">이동하기</a>
+                                        <a href="/ContentPage/FoodContent/FoodContent4.jsp#tab1" class="btn btn-light">이동하기</a>
                                     <% } else {
                                         out.print("출력 x");
                                     } %>
@@ -113,6 +113,9 @@
                             </div>
                         </div>
                     </div>
+                    <% } else { %>
+                    <% out.print("검색결과가 없습니다.");%>
+                    <% } %>
                         </div>
                      </div>
                 </div>
@@ -145,9 +148,9 @@
                                 <!-- Footer Social Icons-->
                                 <div class="col-lg-4 mb-5 mb-lg-0">
                                     <h3 class="text-uppercase mb-4"><b>바로가기</b></h3>
-                                    <a class="btn btn-outline-light btn-social mx-1" href="#!"><img src="door.jpg"
+                                    <a href="#!"><img src="door.jpg"
                                             width="50" height="50"></a>
-                                    <a class="btn btn-outline-light btn-social mx-1" href="#!"><img src="deu.png"
+                                    <a href="#!"><img src="deu.png"
                                             width="50" height="50"></a>
                                 </div>
                                 <!-- Footer About Text-->
@@ -162,15 +165,6 @@
                         </div>
                     </footer>
                 </section>
-                <script src="js/main.js"></script>
-
-                <!-- 슬라이드 수정본 -->
-                <script src="assets/js/jquery-1.11.0.min.js"></script>
-                <script src="assets/js/jquery-migrate-1.2.1.min.js"></script>
-                <script src="assets/js/bootstrap.bundle.min.js"></script>
-                <script src="assets/js/templatemo.js"></script>
-                <script src="assets/js/custom.js"></script>
-                <!-- 슬라이드 수정본 -->
     </body>
     </body>
 
